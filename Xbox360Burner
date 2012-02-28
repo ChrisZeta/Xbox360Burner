@@ -42,7 +42,7 @@ else
 
 	fi
 
-	cd $folder
+	cd "$folder"
 	
 	echo "inserisci il nome del file senza estensione: "
 	ls
