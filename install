@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sudo cp Xbox360Burner.sh /usr/bin/xbox360burner
+sudo chmod 777 /usr/bin/xbox360burner
+
+echo "Installazione completata, puoi richiamare lo script scrivendo xbox360burner"
+read
