@@ -70,7 +70,7 @@ if [ "$mast" != "n" ]; then
 	read elimina
 
 	if 
-		[ "$elimina" = "s" ]; then
+		[ "$elimina" != "n" ]; then
 	rm "$name.iso"
 	echo "Ho eliminato il file iso salvato in precedenza"
 	fi
