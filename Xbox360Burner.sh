@@ -60,11 +60,11 @@ if [ "$mast" != "n" ]; then
 		echo "Quando hai inserito il DVD-DL vuoto premi invio per iniziare la masterizzazione"
 		read
 		growisofs -use-the-force-luke=dao -use-the-force-luke=break:1913760 -dvd-compat -speed=4 -Z "$dev"="$name.iso"
-	
+
 	fi
 
 	echo "Masterizzazione completata :D"	
-	
+
 	echo -n "Vuoi eliminare il file? "
 	echo -n "[S/N] (default S)"
 	read elimina
@@ -88,7 +88,7 @@ else
 	fi
 
 	cd "$folder"
-	
+
 	echo "inserisci il nome del file senza estensione: "
 	ls
 	read img
@@ -99,8 +99,11 @@ else
 	if [ "$xdg" = "s" ]; then
 		echo "Quando hai inserito il DVD-DL vuoto premi invio per iniziare la masterizzazione"
 		read
-		truncate --size=8547991552 "$img.iso"
-		growisofs -use-the-force-luke=dao -use-the-force-luke=break:2086912 -dvd-compat -speed=4 -Z /dev/sr0="$img.iso"
+		echo "Sto copiando il file per effettuare un truncate..."
+		cp "$img.iso" "$img.xgd3"
+		truncate --size=8547991552 "$img.xgd3"
+		growisofs -use-the-force-luke=dao -use-the-force-luke=break:2086912 -dvd-compat -speed=4 -Z /dev/sr0="$img.xgd3"
+		rm "$img.xgd3"
 	else
 		echo "Quando hai inserito il DVD-DL vuoto premi invio per iniziare la masterizzazione"
 		read
@@ -113,4 +116,3 @@ fi
 echo "Premi un tasto per uscire."
 read
 exit
-
